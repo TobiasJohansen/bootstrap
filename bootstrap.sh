@@ -12,7 +12,7 @@ pacman -S --noconfirm gcc git make man-db neovim openssh starship stow unzip xcl
 echo "==> Setting up dotfiles..."
 
 git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles
-stow -d ~/dotfiles -t ~
+stow -d ~/dotfiles -t ~ .
 source ~/.bashrc
 
 echo "==> Bootstrap complete"
