@@ -16,3 +16,5 @@ stow -d ~/dotfiles -t ~ .
 source ~/.bashrc
 
 echo "==> Bootstrap complete"
+
+set +euo pipefail
