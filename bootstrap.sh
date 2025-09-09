@@ -10,7 +10,7 @@ echo "==> Installing packages..."
 pacman -Syu --noconfirm >/dev/null
 pacman -S --noconfirm base-devel fd git man-db neovim openssh ripgrep starship stow unzip xclip >/dev/null
 
-if ! command -v pnpm &>/dev/null; then
+if [ ! -d /root/.local/share/pnpm ]; then
   curl -fsSL https://get.pnpm.io/install.sh | sh - >/dev/null
   rm ~/.bashrc
 fi
