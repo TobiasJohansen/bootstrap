@@ -18,7 +18,7 @@ git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles >/dev/null
 stow -d ~/dotfiles -t ~ . >/dev/null
 source ~/.bashrc
 
-pnpm env use --lts >/dev/null
+# pnpm env use --lts >/dev/null
 
 echo "==> Bootstrap complete"
 
