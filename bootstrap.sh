@@ -1,6 +1,6 @@
 set -euo pipefail
 
-echo "==> Configure locale..."
+echo "==> Configuring locale..."
 
 sed -i 's/^#\s*\(en_US\.UTF-8 UTF-8\)/\1/' /etc/locale.gen
 locale-gen >/dev/null
