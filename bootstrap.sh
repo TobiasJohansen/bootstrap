@@ -25,7 +25,7 @@ source ~/.bashrc
 
 cd ~/
 
-pnpm env use --global lts
+pnpm env use --global lts >/dev/null
 
 echo "==> Bootstrap complete"
 
