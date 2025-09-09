@@ -23,8 +23,6 @@ fi
 stow -d ~/dotfiles -t ~ . >/dev/null
 source ~/.bashrc
 
-# pnpm env use --lts >/dev/null
-
 echo "==> Bootstrap complete"
 
 set +euo pipefail
