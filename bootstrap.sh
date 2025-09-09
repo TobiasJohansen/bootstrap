@@ -15,7 +15,7 @@ curl -fsSL https://get.pnpm.io/install.sh | sh - >/dev/null
 echo "==> Setting up dotfiles..."
 
 git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles >/dev/null
-sstow -d ~/dotfiles -t ~ . --override='*' >/dev/null
+stow -d ~/dotfiles -t ~ . --override='*' >/dev/null
 source ~/.bashrc
 
 # pnpm env use --lts >/dev/null
