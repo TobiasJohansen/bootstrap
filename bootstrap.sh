@@ -11,11 +11,12 @@ pacman -Syu --noconfirm >/dev/null
 pacman -S --noconfirm base-devel git man-db neovim openssh starship stow unzip xclip >/dev/null
 
 curl -fsSL https://get.pnpm.io/install.sh | sh - >/dev/null
+rm ~/.bashrc
 
 echo "==> Setting up dotfiles..."
 
 git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles >/dev/null
-stow -d ~/dotfiles -t ~ . --override='.*' >/dev/null
+stow -d ~/dotfiles -t ~ . >/dev/null
 source ~/.bashrc
 
 # pnpm env use --lts >/dev/null
