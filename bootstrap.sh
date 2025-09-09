@@ -10,12 +10,16 @@ echo "==> Installing packages..."
 pacman -Syu --noconfirm >/dev/null
 pacman -S --noconfirm base-devel git man-db neovim openssh starship stow unzip xclip >/dev/null
 
-curl -fsSL https://get.pnpm.io/install.sh | sh - >/dev/null
-rm ~/.bashrc
+if ! command -v pnpm &>/dev/null; then
+  curl -fsSL https://get.pnpm.io/install.sh | sh - >/dev/null
+  rm ~/.bashrc
+fi
 
 echo "==> Setting up dotfiles..."
 
-git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles >/dev/null
+if [ ! -d ~/dotfiles ]; then
+  git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles >/dev/null
+fi
 stow -d ~/dotfiles -t ~ . >/dev/null
 source ~/.bashrc
 
