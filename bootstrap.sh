@@ -6,12 +6,12 @@ locale-gen
 
 echo "==> Bootstrapping environment..."
 
-pacman -Syu --noconfirm
-pacman -S --noconfirm gcc git make man-db neovim openssh starship stow unzip xclip
+pacman -Syu --noconfirm >/dev/null
+pacman -S --noconfirm base-devel git man-db neovim openssh starship stow unzip xclip >/dev/null
 
 echo "==> Setting up dotfiles..."
 
-git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles
+git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles >/dev/null
 stow -d ~/dotfiles -t ~ .
 source ~/.bashrc
 
