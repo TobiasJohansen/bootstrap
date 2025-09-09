@@ -10,10 +10,6 @@ echo "==> Installing packages..."
 pacman -Syu --noconfirm >/dev/null
 pacman -S --noconfirm base-devel git man-db neovim openssh starship stow unzip xclip >/dev/null
 
-if ! grep "appendWindowsPath = false" "/etc/wsl.conf"; then
-  sed -i '$a\\n[interop]\nappendWindowsPath = false' "/etc/wsl.conf"
-fi
-
 if ! command -v pnpm &>/dev/null; then
   curl -fsSL https://get.pnpm.io/install.sh | sh - >/dev/null
   rm ~/.bashrc
@@ -22,11 +18,12 @@ fi
 echo "==> Setting up dotfiles..."
 
 if [ ! -d ~/dotfiles ]; then
-  git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles >/dev/null
+  git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles >/dev/null 2>&1
 fi
 stow -d ~/dotfiles -t ~ . >/dev/null
 source ~/.bashrc
 
+which pnpm
 pnpm env use --global lts
 
 echo "==> Bootstrap complete"
