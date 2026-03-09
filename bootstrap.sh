@@ -8,7 +8,7 @@ locale-gen >/dev/null
 echo "==> Installing packages..."
 
 pacman -Syu --noconfirm >/dev/null
-pacman -S --noconfirm base-devel fd git keychain lazygit man-db neovim openssh ripgrep starship stow tree-sitter unzip xclip >/dev/null
+pacman -S --noconfirm base-devel fd git keychain lazygit man-db neovim openssh ripgrep starship stow tree-sitter-cli unzip xclip >/dev/null
 
 if [ ! -d /root/.local/share/pnpm ]; then
   curl -fsSL https://get.pnpm.io/install.sh | sh - >/dev/null
