@@ -15,10 +15,28 @@ if [ ! -d /root/.local/share/pnpm ]; then
   rm ~/.bashrc
 fi
 
+echo "==> Configuring SSH..."
+
+SSH_KEY_FILE="$HOME/.ssh/id_ed25519"
+
+if [ ! -f "$SSH_KEY_FILE" ]; then
+  read -p "Enter your email: " ssh_email
+  ssh-keygen -q -t ed25519 -C "$ssh_email" -f "$SSH_KEY_FILE"
+
+  echo ""
+  echo "Add the following SSH key at https://github.com/settings/keys:"
+  cat "${SSH_KEY_FILE}.pub"
+  echo ""
+
+  read -p "Press [Enter] to continue..."
+else
+  echo "SSH key already exists at $SSH_KEY_FILE. Skipping generation."
+fi
+
 echo "==> Setting up dotfiles..."
 
 if [ ! -d ~/dotfiles ]; then
-  git clone https://github.com/TobiasJohansen/dotfiles ~/dotfiles >/dev/null 2>&1
+  git clone git@github.com:TobiasJohansen/dotfiles.git ~/dotfiles >/dev/null 2>&1
 fi
 stow -d ~/dotfiles -t ~ . >/dev/null
 source ~/.bashrc
