@@ -21,6 +21,10 @@ SSH_KEY_FILE="$HOME/.ssh/id_ed25519"
 if [ ! -f "$SSH_KEY_FILE" ]; then
   echo ""
   read -p "Enter your email: " ssh_email
+
+  git config --global user.email "$ssh_email"
+  git config --global user.name "Tobias Johansen"
+
   ssh-keygen -q -t ed25519 -C "$ssh_email" -f "$SSH_KEY_FILE"
 
   echo ""
@@ -33,6 +37,7 @@ if [ ! -f "$SSH_KEY_FILE" ]; then
   echo ""
   echo "Adding key to keychain..."
   eval $(keychain --eval --quiet id_ed25519)
+  echo ""
 fi
 
 if ! ssh-keygen -F github.com >/dev/null 2>&1; then
