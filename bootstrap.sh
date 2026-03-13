@@ -18,8 +18,8 @@ fi
 echo "==> Configuring SSH..."
 
 SSH_KEY_FILE="$HOME/.ssh/id_ed25519"
-
 if [ ! -f "$SSH_KEY_FILE" ]; then
+  echo ""
   read -p "Enter your email: " ssh_email
   ssh-keygen -q -t ed25519 -C "$ssh_email" -f "$SSH_KEY_FILE"
 
@@ -29,8 +29,14 @@ if [ ! -f "$SSH_KEY_FILE" ]; then
   echo ""
 
   read -p "Press [Enter] to continue..."
-else
-  echo "SSH key already exists at $SSH_KEY_FILE. Skipping generation."
+
+  echo ""
+  echo "Adding key to keychain..."
+  eval $(keychain --eval --quiet id_ed25519)
+fi
+
+if ! ssh-keygen -F github.com >/dev/null 2>&1; then
+  ssh-keyscan -t ed25519 github.com >>~/.ssh/known_hosts 2>/dev/null
 fi
 
 echo "==> Setting up dotfiles..."
