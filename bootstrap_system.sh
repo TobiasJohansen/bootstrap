@@ -14,7 +14,7 @@ echo "==> Setting up user..."
 
 USERNAME="tobias"
 if ! id "$USERNAME" &>/dev/null; then
-  useradd -m -G wheel -s /bin/bash "$USERNAME"
+  useradd -m -G wheel -k /var/empty -s /bin/bash "$USERNAME"
   sed -i 's/^# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
 fi
 
