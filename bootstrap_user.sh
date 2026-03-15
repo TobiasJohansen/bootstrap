@@ -1,10 +1,5 @@
 set -euo pipefail
 
-if [ ! -d /root/.local/share/pnpm ]; then
-  curl -fsSL https://get.pnpm.io/install.sh | sh - >/dev/null
-  rm ~/.bashrc
-fi
-
 echo "==> Configuring SSH..."
 
 SSH_KEY_FILE="$HOME/.ssh/id_ed25519"
