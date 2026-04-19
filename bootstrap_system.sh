@@ -8,7 +8,7 @@ locale-gen >/dev/null
 echo "==> Installing packages..."
 
 pacman -Syu --noconfirm >/dev/null
-pacman -S --noconfirm base-devel fd git keychain lazygit man-db neovim openssh pnpm ripgrep starship stow tree-sitter-cli unzip xclip >/dev/null
+pacman -S --noconfirm base-devel fd git keychain lazygit man-db neovim openssh pnpm ripgrep starship stow tmux tree-sitter-cli unzip xclip >/dev/null
 
 USERNAME="tobias"
 if ! id "$USERNAME" &>/dev/null; then
